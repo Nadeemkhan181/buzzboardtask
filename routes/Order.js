@@ -25,7 +25,7 @@ router.post('/orders/create', async (req, res) => {
        res.status(202).json({ message : "Order Created", data : order });
            
     }else{
-        res.status(202).json({ message : "All fields are required!" });
+        res.status(400).json({ message : "All fields are required!" });
     }
              
     } catch (error) {
@@ -55,7 +55,7 @@ router.post('/orders/update', async (req, res) => {
 
 
        }
-       
+
     }else{
         res.json({ message : "All fields are required!" });
     }
@@ -92,9 +92,9 @@ router.post('/orders/search', async (req, res) => {
 
        const order = await MyModel.findById(req.body.id);
 
-       res.status(202).json(order);
+       res.status(200).json(order);
     }else{
-        res.json({ message : "Please Provide ID To Search Order!" });
+        res.status(400).json({ message : "Please Provide ID To Search Order!" });
     }
              
     } catch (error) {
@@ -114,12 +114,12 @@ router.post('/orders/delete', async (req, res) => {
 
        if(order){
 
-       res.status(202).json({ message : "Order Deleted!"});
+       res.status(200).json({ message : "Order Deleted!"});
            
        }
 
     }else{
-        res.json({ message : "Please Provide ID To Delete Order!" });
+        res.status(400).json({ message : "Please Provide ID To Delete Order!" });
     }
              
     } catch (error) {
