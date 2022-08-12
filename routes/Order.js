@@ -48,8 +48,14 @@ router.post('/orders/update', async (req, res) => {
 
        const order = await MyModel.findByIdAndUpdate(req.body.id, updatedata);
 
+       if(order){
+
+
        res.status(202).json({ message : "Order Updated" });
 
+
+       }
+       
     }else{
         res.json({ message : "All fields are required!" });
     }
